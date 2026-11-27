@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI);
+        const uri = process.env.MONGODB_URI || "mongodb+srv://selvikalai0315_db_user:Puvaneshwari2008@puvaneshwari.usesw4s.mongodb.net/naira_hospital";
+        await mongoose.connect(uri, {
+            dbName: process.env.DB_NAME || 'naira_hospital'
+        });
 
         console.log("MongoDB Connected Successfully!");
     } catch (error) {
